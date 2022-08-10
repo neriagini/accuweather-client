@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
 import { format } from 'date-fns'
-const { zonedTimeToUtc, utcToZonedTime } = require('date-fns-tz');
+const { utcToZonedTime } = require('date-fns-tz');
 
 export default function Clock({time, city ,tz}) {
     
 
     const timeZone = tz
     const zonedDate = utcToZonedTime(time, timeZone)
-
 
     return(
         <div className="m-5 bg-blue-500 rounded-xl p-5">

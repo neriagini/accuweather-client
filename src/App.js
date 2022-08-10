@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Clock from './components/Clock';
 
+// AccuWeather Key
 const KEY = 'b9qlnPQZvXqa7GdY9JTN9aqQoISsyeHi'
 
 function App() {
 
-  const [events, setEvents] = useState([]);
   const [time, setTime] = useState(new Date());
   
   // text field
@@ -15,13 +15,11 @@ function App() {
   // city object with with timezone prop
   const [city, setCity] = useState(null)
 
-
   // array of cities - without timezone prop
   // for each city - fetch the full object using name and getLocationKey
   const [cities, setCities] = useState([]);
   // array of selected cities
   const [selectedCities, setSelectedCities] = useState([]);
-
 
   useEffect(
     () => {
@@ -51,11 +49,8 @@ function App() {
     }
   }
 
-  const getEvents = async () => {
-      await axios.get('http://localhost:8080/list-events').then(response => {
-        console.log(response)
-      })
-  }
+
+
 
   const getLocationKey = async () => {
     await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${KEY}&q=${location}`)
@@ -87,12 +82,9 @@ function App() {
     setSelectedCities(prev => [...prev, city ])
   }
 
+
   return (
     <div className="App">
-        <div>
-          <p className='text-[25px] font-bold m-10'> Google Calendar API </p>
-          <button className='text-white border-2 p-2 rounded-xl bg-blue-500' onClick={getEvents}> Fetch Events </button>
-        </div>
         <div className='space-x-2'>
           <p className='text-[25px] font-bold m-10'> AccuWeather API </p>
           <input type='text' placeholder='Enter location...'  onChange={onLocationChange} className='border-2 p-2 rounded-xl'/>
