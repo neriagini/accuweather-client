@@ -2,7 +2,6 @@ import { format } from 'date-fns'
 const { utcToZonedTime } = require('date-fns-tz');
 
 export default function Clock({time, city ,tz}) {
-    
 
     const timeZone = tz
     const zonedDate = utcToZonedTime(time, timeZone)

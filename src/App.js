@@ -9,10 +9,9 @@ const KEY = 'b9qlnPQZvXqa7GdY9JTN9aqQoISsyeHi'
 function App() {
 
   const [time, setTime] = useState(new Date());
-  
   // text field
   const [location, setLocation] = useState(null);
-  // city object with with timezone prop
+  // city object with timezone prop
   const [city, setCity] = useState(null)
 
   // array of cities - without timezone prop
@@ -24,7 +23,6 @@ function App() {
   useEffect(
     () => {
       const intervalId = setInterval(() => {
-      
         setTime(new Date());
       }, 1000);
       return () => {
@@ -32,7 +30,6 @@ function App() {
       }
     } 
   )
-
   const onLocationChange = (event) => {
     setLocation(event.target.value)
   }
@@ -48,9 +45,6 @@ function App() {
       setCities([])
     }
   }
-
-
-
 
   const getLocationKey = async () => {
     await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${KEY}&q=${location}`)
